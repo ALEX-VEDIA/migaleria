@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NUESTRA GALERIA ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --bg:#0f0b14;
+      --card:#17111f;
+      --soft:#24192d;
+      --gold:#f0d7a1;
+      --pink:#f5c2d5;
+      --text:#f7f4f8;
+      --muted:#c7bccf;
+      --shadow:0 10px 40px rgba(0,0,0,0.45);
+    }
+
+    body{
+      background:
+      radial-gradient(circle at top left, rgba(245,194,213,0.15), transparent 25%),
+      radial-gradient(circle at bottom right, rgba(240,215,161,0.12), transparent 25%),
+      var(--bg);
+
+      color:var(--text);
+      overflow-x:hidden;
+      font-family:'Montserrat', sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    .stars{
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      overflow:hidden;
+      z-index:-1;
+    }
+
+    .star{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:white;
+      border-radius:50%;
+      opacity:0.7;
+      animation:twinkle 4s infinite ease-in-out;
+    }
+
+    @keyframes twinkle{
+      0%,100%{
+        opacity:0.2;
+      }
+      50%{
+        opacity:1;
+      }
+    }
+
+    .login-screen{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .glass{
+      width:100%;
+      max-width:500px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(18px);
+      border-radius:35px;
+      padding:50px;
+      text-align:center;
+      box-shadow:var(--shadow);
+      animation:fade 1.5s ease;
+    }
+
+    .glass h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:4rem;
+      font-weight:600;
+      color:var(--gold);
+      margin-bottom:15px;
+    }
+
+    .glass p{
+      color:var(--muted);
+      line-height:1.8;
+      margin-bottom:30px;
+    }
+
+    .input{
+      width:100%;
+      padding:18px;
+      border:none;
+      outline:none;
+      border-radius:18px;
+      background:rgba(255,255,255,0.08);
+      color:white;
+      font-size:1rem;
+      margin-bottom:20px;
+    }
+
+    .input::placeholder{
+      color:#cbbfd4;
+    }
+
+    .btn{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:18px;
+      background:linear-gradient(135deg,var(--pink),var(--gold));
+      color:#221a25;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.4s;
+      font-size:1rem;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px) scale(1.02);
+      box-shadow:0 10px 30px rgba(240,215,161,0.25);
+    }
+
+    .error{
+      color:#ff9eb4;
+      margin-top:15px;
+      display:none;
+    }
+
+    .main{
+      display:none;
+      animation:fade 1.3s ease;
+    }
+
+    @keyframes fade{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:30px;
+      position:relative;
+    }
+
+    .hero h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:6rem;
+      color:var(--gold);
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      max-width:850px;
+      line-height:2;
+      color:var(--muted);
+      font-size:1.1rem;
+    }
+
+    .counter{
+      margin-top:40px;
+      background:rgba(255,255,255,0.05);
+      padding:25px 40px;
+      border-radius:25px;
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .counter h2{
+      font-size:1rem;
+      color:var(--muted);
+      margin-bottom:10px;
+      font-weight:400;
+    }
+
+    .days{
+  font-size:3rem;
+  font-weight:700;
+  background:linear-gradient(135deg,#f5c2d5,#f0d7a1);
+  -webkit-background-clip:text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 25px rgba(240,215,161,0.15);
+  line-height:1.4;
+    }
+
+
+    .poem{
+      max-width:1100px;
+      margin:100px auto;
+      padding:0 25px;
+    }
+
+    .poem-card{
+      background:rgba(255,255,255,0.04);
+      border-radius:35px;
+      padding:60px;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:var(--shadow);
+    }
+
+    .poem-card h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:4rem;
+      text-align:center;
+      margin-bottom:30px;
+      color:var(--gold);
+    }
+
+    .poem-card p{
+      line-height:2.4;
+      color:#e7deee;
+      text-align:center;
+      font-size:1.1rem;
+      white-space:pre-line;
+    }
+
+    .gallery-section{
+      padding:80px 25px 140px;
+    }
+
+    .gallery-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .gallery-title h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:4rem;
+      color:var(--gold);
+      margin-bottom:15px;
+    }
+
+    .gallery-title p{
+      color:var(--muted);
+    }
+
+    .gallery{
+      column-count:5;
+      column-gap:20px;
+      max-width:1800px;
+      margin:auto;
+    }
+
+    .card{
+      break-inside:avoid;
+      margin-bottom:20px;
+      overflow:hidden;
+      border-radius:28px;
+      position:relative;
+      cursor:pointer;
+      background:var(--card);
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:var(--shadow);
+    }
+
+    .card img{
+      width:100%;
+      display:block;
+      transition:0.8s;
+    }
+
+    .card:hover img{
+      transform:scale(1.08);
+      filter:brightness(1.1);
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+      display:flex;
+      align-items:flex-end;
+      padding:25px;
+      opacity:0;
+      transition:0.5s;
+    }
+
+    .card:hover .overlay{
+      opacity:1;
+    }
+
+    .overlay h3{
+      font-size:1rem;
+      font-weight:400;
+      line-height:1.8;
+    }
+
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.92);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+      padding:30px;
+    }
+
+    .lightbox img{
+      max-width:90%;
+      max-height:90vh;
+      border-radius:20px;
+      box-shadow:0 0 40px rgba(255,255,255,0.08);
+    }
+
+    .close{
+      position:absolute;
+      top:30px;
+      right:40px;
+      color:white;
+      font-size:3rem;
+      cursor:pointer;
+    }
+
+    .music-btn{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      width:75px;
+      height:75px;
+      border:none;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--pink),var(--gold));
+      color:#1d1620;
+      font-size:1.5rem;
+      cursor:pointer;
+      z-index:999;
+      box-shadow:0 10px 30px rgba(0,0,0,0.35);
+      transition:0.4s;
+    }
+
+    .music-btn:hover{
+      transform:scale(1.08) rotate(8deg);
+    }
+
+    @media(max-width:1400px){
+      .gallery{
+        column-count:4;
+      }
+    }
+
+    @media(max-width:1000px){
+
+      .hero h1{
+        font-size:4.5rem;
+      }
+
+      .gallery{
+        column-count:3;
+      }
+    }
+
+    @media(max-width:700px){
+
+      .hero h1{
+        font-size:3.2rem;
+      }
+
+      .poem-card{
+        padding:35px;
+      }
+
+      .gallery{
+        column-count:2;
+      }
+
+      .gallery-title h2{
+        font-size:3rem;
+      }
+    }
+
+    @media(max-width:500px){
+
+      .gallery{
+        column-count:1;
+      }
+
+      .glass{
+        padding:35px;
+      }
+
+      .hero h1{
+        font-size:2.6rem;
+      }
+
+      .poem-card h2{
+        font-size:3rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="stars" id="stars"></div>
+
+  <!-- LOGIN -->
+  <div class="login-screen" id="loginScreen">
+
+    <div class="glass">
+
+      <h1>NUESTROS RECUERDOS</h1>
+
+      <p>
+        Un pequeño lugar donde viven nuestros recuerdos que jamás quiero olvidar contigo ❤️
+      </p>
+
+      <input
+        type="password"
+        class="input"
+        id="password"
+        placeholder="Ingresa nuestra fecha especial"
+      >
+
+      <button class="btn" onclick="login()">
+        Entrar ✨
+      </button>
+
+      <div class="error" id="error">
+        Contraseña incorrecta
+      </div>
+
+    </div>
+
+  </div>
+
+  <main class="main" id="main">
+
+    <section class="hero">
+
+      <h1>TE AMO ❤️</h1>
+
+      <p>
+        Esto es solo una parte de todo lo que vivimos y viviremos
+        <br>
+        Gracias por existir,
+        por acompañarme,por convertir mi vida en un lugar más bonito.
+      </p>
+
+      <div class="counter">
+
+        <h2>Llevamos juntos</h2>
+
+        <div class="days" id="daysTogether">
+        0 meses
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="poem">
+
+      <div class="poem-card">
+
+        <h2>PARA TI JEJE💌</h2>
+
+    <p>
+    LA VERDAD YA NO IBA A HACER ESTO POR LO QUE ME DIJISTE SOBRE LOS REGALOS VIRTUALES PERO 
+    LUEGO LO ACLARASTE NO CAMBIA MUCHO ESO PERO ESTE ESTE ES MI REGALO ESPERO TE GUSTE Y PERDON SI TALVEZ NO ES LO QUE ESPERABAS PERO LO HICE CON MUCHO CARIÑO Y LA VERDAD
+    SI ME TOMO MUCHO TIEMPO JEJE.
+    YO NO SOY DE DECIR SIEMPRE LO QUE SIENTO PERO LO QUE ME GUSTA DE TI ES QUE:
+    TIENES UNA SONRISA MUY LINDA LA CUAL ME GUSTA VER SIEMPRE,ERES TIERNA, MUY CARIÑOSA EN OCASIONES TE PONES TRAVIESA YA SABES A QUE ME REFIERO JEJE Y AUNQUE SEAS UN POQUITO 
+    ENOJONA IGUAL ME SIGUES GUSTANDO,TENEMOS COSAS QUE MEJORAR PERO ESO LO IREMOS MEJORANDO POCO A POCO JUNTOS.
+
+    FELIZ MES AMOR 
+    TE AMO❤️
+    </p>
+
+      </div>
+
+    </section>
+
+    <section class="gallery-section">
+
+      <div class="gallery-title">
+
+        <h2>Nuestras Fotos</h2>
+
+        <p>
+          Cada imagen guarda un momento eterno ✨
+        </p>
+
+      </div>
+
+      <div class="gallery">
+
+        <div class="card">
+          <img src="FOTOS/foto1.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>24 enero 2026 ❤️</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="FOTOS/FOTO2.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>16 julio 2025 ✨</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="FOTOS/FOTO3.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>24 enero 2026 🌙</h3>
+          </div>
+        </div>
+
+        <!-- FOTO 4 -->
+        <div class="card">
+          <img src="FOTOS/FOTO4.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>16 julio 2025 💕</h3>
+          </div>
+        </div>
+
+        <!-- FOTO 5 -->
+        <div class="card">
+          <img src="FOTOS/FOTO5.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>27 enero 2026 ✨</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="FOTOS/FOTO6.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>27 enero 2026 ❤️</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="FOTOS/FOTO7.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>27 enero 2026 ❤️</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="FOTOS/FOTO8.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>31 enero 2026 ❤️</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="FOTOS/FOTO9.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>31 enero 2026 ❤️</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="FOTOS/FOTO10.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>26 febrero 2026 ❤️</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO11.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>08 marzo 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO12.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>21 abril 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO13.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>21 abril 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO14.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>15 mayo 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO15.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>15 mayo 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO16.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>15 mayo 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO17.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>15 mayo 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO18.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>15 mayo 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO19.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>12 mayo 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO20.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>12 mayo 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO21.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>12 mayo 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO22.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>12 mayo 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO23.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>12 mayo 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO24.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>12 mayo 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO25.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>12 mayo 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO26.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>16 julio 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO27.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>18 septiembre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO28.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>18 septiembre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO29.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>19 septiembre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO30.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>20 septiembre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO31.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>22 septiembre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO32.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>22 septiembre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO33.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>21 septiembre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO34.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>20 septiembre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO35.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>30 septiembre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO36.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>22 octubre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO37.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>22 octubre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO38.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>22 octubre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO39.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>22 octubre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO40.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>27 enero 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO41.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>05 enero 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO42.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>05 enero 2026 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO43.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>14 noviembre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO44.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>24 octubre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO45.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>24 octubre 2025 💕</h3>
+          </div>
+        </div>
+        <div class="card">
+          <img src="FOTOS/FOTO46.jpeg" alt="">
+
+          <div class="overlay">
+            <h3>24 octubre 2025 💕</h3>
+          </div>
+        </div>
+        
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+
+    <span class="close" id="closeBtn">&times;</span>
+
+    <img id="lightboxImg">
+
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="music" loop>
+
+    <!-- CAMBIAR CANCIÓN -->
+    <source src="music/cancion.mp3.mp3" type="audio/mp3">
+
+  </audio>
+
+  <!-- BOTÓN MÚSICA -->
+  <button class="music-btn" id="musicBtn">
+    🔊
+  </button>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    // =========================
+    // CONTRASEÑA
+    // =========================
+
+    // CAMBIA ESTO
+    const correctPassword = "28072025";
+
+    // =========================
+    // FECHA DE RELACIÓN
+    // =========================
+
+    // CAMBIA ESTA FECHA
+    const relationshipDate = new Date(2025, 6, 28);
+
+    // =========================
+    // ELEMENTOS
+    // =========================
+
+    const loginScreen = document.getElementById("loginScreen");
+    const main = document.getElementById("main");
+    const password = document.getElementById("password");
+    const error = document.getElementById("error");
+
+    const music = document.getElementById("music");
+    const musicBtn = document.getElementById("musicBtn");
+
+    // =========================
+    // LOGIN
+    // =========================
+
+    function login(){
+
+      if(password.value === correctPassword){
+
+        loginScreen.style.display = "none";
+        main.style.display = "block";
+
+        music.play().catch(err=>{
+          console.log(err);
+        });
+
+      }else{
+
+        error.style.display = "block";
+      }
+    }
+
+    password.addEventListener("keypress", (e)=>{
+
+      if(e.key === "Enter"){
+        login();
+      }
+
+    });
+
+    // =========================
+    // CONTADOR DE DÍAS
+    // =========================
+
+    function updateRelationshipTime(){
+
+  const today = new Date();
+
+  // Fecha inicial
+  let start = new Date(relationshipDate);
+
+  // Variables
+  let years = today.getFullYear() - start.getFullYear();
+  let months = today.getMonth() - start.getMonth();
+  let days = today.getDate() - start.getDate();
+
+  // Ajustar días negativos
+  if(days < 0){
+
+    months--;
+
+    // Último día del mes anterior
+    const previousMonth = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      0
+    ).getDate();
+
+    days += previousMonth;
+  }
+
+  // Ajustar meses negativos
+  if(months < 0){
+
+    years--;
+    months += 12;
+  }
+
+  // Texto dinámico elegante
+  let text = "";
+
+  if(years > 0){
+    text += `${years} año${years > 1 ? "s" : ""} `;
+  }
+
+  if(months > 0){
+    text += `${months} mes${months > 1 ? "es" : ""} `;
+  }
+
+  text += `${days} día${days !== 1 ? "s" : ""}`;
+
+  document.getElementById("daysTogether").innerHTML = text;
+}
+
+// Ejecutar al cargar
+updateRelationshipTime();
+
+// Actualizar automáticamente cada día
+setInterval(updateRelationshipTime, 1000 * 60 * 60);
+
+    // =========================
+    // BOTÓN MÚSICA
+    // =========================
+
+    musicBtn.addEventListener("click", ()=>{
+
+      if(music.paused){
+
+        music.play();
+        musicBtn.innerHTML = "🔊";
+
+      }else{
+
+        music.pause();
+        musicBtn.innerHTML = "🔇";
+      }
+
+    });
+
+    // =========================
+    // LIGHTBOX
+    // =========================
+
+    const cards = document.querySelectorAll(".card img");
+
+    const lightbox = document.getElementById("lightbox");
+
+    const lightboxImg = document.getElementById("lightboxImg");
+
+    const closeBtn = document.getElementById("closeBtn");
+
+    cards.forEach(img=>{
+
+      img.addEventListener("click", ()=>{
+
+        lightbox.style.display = "flex";
+
+        lightboxImg.src = img.src;
+
+      });
+
+    });
+
+    closeBtn.addEventListener("click", ()=>{
+
+      lightbox.style.display = "none";
+
+    });
+
+    lightbox.addEventListener("click", (e)=>{
+
+      if(e.target === lightbox){
+
+        lightbox.style.display = "none";
+      }
+
+    });
+
+    // =========================
+    // ESTRELLAS
+    // =========================
+
+    const stars = document.getElementById("stars");
+
+    for(let i=0; i<180; i++){
+
+      const star = document.createElement("div");
+
+      star.classList.add("star");
+
+      star.style.left = Math.random() * 100 + "%";
+
+      star.style.top = Math.random() * 100 + "%";
+
+      star.style.animationDuration =
+      (Math.random() * 5 + 2) + "s";
+
+      stars.appendChild(star);
+    }
+
+  </script>
+
+</body>
+</html>
